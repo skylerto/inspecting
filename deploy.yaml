@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    role: inspecting
+  name: inspecting
+spec:
+  ports:
+  - name: "8080"
+    port: 80
+    targetPort: 8080
+  selector:
+    role: inspecting
+  type: LoadBalancer
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: inspecting
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        role: inspecting
+    spec:
+      containers:
+      - image: skylerto/inspecting
+        imagePullPolicy: IfNotPresent
+        name: inspecting
+        ports:
+        - containerPort: 8080
+        resources: {}
+      restartPolicy: Always
+status: {}
