@@ -37,7 +37,7 @@ func main() {
   // file := os.Args[1]
 
   server := http.Server{
-    Addr: "127.0.0.1:8080",
+    Addr: "0.0.0.0:8080",
   }
   fs := http.FileServer(http.Dir("static"))
   http.Handle("/static/", http.StripPrefix("/static/", fs))
