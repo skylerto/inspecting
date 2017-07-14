@@ -1,0 +1,9 @@
+.control {
+  padding-bottom: 2em;
+}
+.passed {
+  color: #3c763d;
+}
+.failed {
+  color: #a94442;
+}
