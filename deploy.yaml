@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - image: skylerto/inspecting
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: inspecting
         ports:
         - containerPort: 8080
