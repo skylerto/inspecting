@@ -12,14 +12,14 @@ import (
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-  log.Println("GET Request made for /view")
+  log.Println(r.Method + " Request made for /view" , r.RemoteAddr)
   res := getResults("./linux.json")
   t, _ := template.ParseFiles("templates/view.html")
   t.Execute(w, res.Profiles)
 }
 
 func generate(w http.ResponseWriter, r *http.Request) {
-  log.Println("POST Request made for /generate")
+  log.Println(r.Method + " Request made for /view" , r.RemoteAddr)
   body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
   if err != nil {
       panic(err)
